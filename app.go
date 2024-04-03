@@ -1,10 +1,11 @@
-package app
+package main
 
 import (
 	"context"
 	"database/sql"
 	"fmt"
 
+	"github.com/wailsapp/wails/v2/pkg/runtime"
 	_ "modernc.org/sqlite"
 )
 
@@ -34,7 +35,12 @@ func (a *App) Startup(ctx context.Context) {
 	}
 
 	a.db = db
-	a.MustLoadOrInitDB()
+	runtime.EventsOn(a.ctx, "view:setupComplete", func(optionalData ...interface{}) {
+		a.MustLoadOrInitDB()
+		runtime.EventsEmit(a.ctx, "modFolder", a.Configs["modDir"])
+		runtime.EventsEmit(a.ctx, "appReady")
+	})
+	// a.MustLoadOrInitDB()
 }
 
 // Greet returns a greeting for the given name

@@ -1,4 +1,6 @@
 html {
+    height: 100%;
+    overflow: hidden;
     background-color: rgba(27, 38, 54, 0.493);
     text-align: center;
     color: white;

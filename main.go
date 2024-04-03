@@ -3,7 +3,6 @@ package main
 import (
 	"embed"
 
-	"github.com/chancesm/sv-mod-manager/backend/app"
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
 	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
@@ -15,13 +14,14 @@ var assets embed.FS
 
 func main() {
 	// Create an instance of the app structure
-	app := app.NewApp()
+	app := NewApp()
 
 	// Create application with options
 	err := wails.Run(&options.App{
-		Title:  "Stardew Valley Mod Manager",
-		Width:  1024,
-		Height: 768,
+		Title:    "Stardew Valley Mod Manager",
+		Width:    1024,
+		Height:   768,
+		MinWidth: 930,
 		AssetServer: &assetserver.Options{
 			Assets: assets,
 		},
