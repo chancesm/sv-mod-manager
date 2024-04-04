@@ -3,11 +3,11 @@ import { useAppStore } from '../stores/app';
 const store = useAppStore();
 const openFolder = () => {
     console.log("openFolder")
-    window.runtime.EventsEmit('openFolder')
+    window.runtime.EventsEmit('view:openFolder')
 }
 const changeFolder = () => {
     console.log("changeFolder")
-    window.runtime.EventsEmit('changeFolder')
+    window.runtime.EventsEmit('view:changeFolder')
 }
 </script>
 

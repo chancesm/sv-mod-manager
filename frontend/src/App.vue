@@ -8,11 +8,11 @@ const store = useAppStore();
 
 onMounted(() => {
   // Setup Listeners
-  window.runtime.EventsOn('modFolder', (modFolder) => {
+  window.runtime.EventsOn('app:modFolder', (modFolder) => {
     console.log("received event: modFolder", modFolder)
     store.setModFolder(modFolder)
   });
-  window.runtime.EventsOn('appReady', () => {
+  window.runtime.EventsOn('app:appReady', () => {
     console.log("received event: appReady")
     store.setReady()
   });
